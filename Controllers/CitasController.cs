@@ -18,12 +18,9 @@ namespace SistemaVeterinaria.Controllers
         }
 
         private List<ICita> ObtenerListaDeCitas(){
-           
-            List<ICita> citas = new List<ICita>
-                {
-                    new ConsultaFactory().CrearCita(),
-                    new VacunacionFactory().CrearCita()
-                };
+
+            List<ICita> citas = new List<ICita>();
+            //aqui debemos traer la lista de la bd
 
             return citas;
         }

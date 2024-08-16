@@ -6,7 +6,8 @@
     <section class="row" aria-labelledby="veterinaryTitle">
         <h1 id="title">Veterinaria</h1>
         <p class="lead">Bienvenido a nuestra veterinaria, donde el cuidado de tu mascota es nuestra prioridad. Ofrecemos una amplia gama de servicios para mantener a tu mascota saludable y feliz.</p>
-        <p><a href="/Servicios" class="btn btn-primary btn-md">Conoce nuestros servicios &raquo;</a></p>
+                <a>@Html.ActionLink("Conoce nuestros servicios", "Index", "Citas", new { area = "" }, new { @class = "btn btn-primary" })</a>
+
     </section>
 
     <div class="row">
@@ -15,13 +16,11 @@
             <p>
                 Contamos con veterinarios altamente calificados para realizar consultas y diagnósticos precisos, asegurando el bienestar de tu mascota.
             </p>
-            <p><a class="btn btn-outline-dark"
-                  >Más información &raquo;</a></p>
+          
         </section>
         <section class="col-md-4" aria-labelledby="petCareTitle">
             <h2 id="petCareTitle">Cuidado y Aseo</h2>
             <p>Proporcionamos servicios de aseo y cuidado para mantener a tu mascota en las mejores condiciones.</p>
-            <p><a class="btn btn-outline-dark" href="/Cuidado">Más información &raquo;</a></p>
         </section>
     </div>
 </main>

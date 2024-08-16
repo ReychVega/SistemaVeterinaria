@@ -23,13 +23,13 @@
         @if (hayMasDeUnaCita)
         {
 
-        foreach (var cita in Model)
-        {
-            <tr>
-                <td>@cita.Descripcion</td>
-                <td>@cita.Fecha.ToShortDateString()</td>
-            </tr>
-        }
+            foreach (var cita in Model)
+            {
+                <tr>
+                    <td>@cita.Descripcion</td>
+                    <td>@cita.Fecha.ToShortDateString()</td>
+                </tr>
+            }
         }
 
     </tbody>
