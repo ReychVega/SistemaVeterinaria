@@ -26,38 +26,55 @@ namespace SistemaVeterinaria.Controllers
         }
 
 
-        public ActionResult ProgramarCita(string tipoCita)
+        public ActionResult ProgramarCita()
         {
-            CitaFactory factory = ObtenerFabrica(tipoCita);
-
-            if (factory == null)
-            {
-                return HttpNotFound("Tipo de cita no válido");
-            }
-
-            ICita cita = factory.CrearCita();
-            cita.Programar();
-
-            return View(cita);
+       
+            return View();
         }
 
         [HttpPost]
         public ActionResult ProgramarCita(string Descripcion, DateTime Fecha, string tipoCita)
         {
-            CitaFactory factory = ObtenerFabrica(tipoCita);
-
-            if (factory == null)
+            if (string.IsNullOrWhiteSpace(Descripcion))
             {
-                return HttpNotFound("Tipo de cita no válido");
+                ModelState.AddModelError("Descripcion", "La descripción no puede estar vacía.");
             }
 
-            ICita cita = factory.CrearCita();
-            cita.Descripcion = Descripcion;
-            cita.Fecha = Fecha;
-            cita.Programar();//guarrdamos en bd
+            if (Fecha < DateTime.Now)
+            {
+                ModelState.AddModelError("Fecha", "La fecha no se encuentra disponible para una cita");
+            }
 
-            return View("CitaProgramada", cita); 
+            if (!ModelState.IsValid)
+            {
+                return View("Error"); 
+            }
+
+            try
+            {
+
+                CitaFactory factory = ObtenerFabrica(tipoCita);
+
+                if (factory == null)
+                {
+                    return HttpNotFound("Tipo de cita no válido");
+                }
+
+                ICita cita = factory.CrearCita();
+                cita.Descripcion = Descripcion;
+                cita.Fecha = Fecha;
+                cita.Programar();
+                // Guardamos en la BD
+
+                return View("CitaProgramada", cita);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Hubo un error al programar la cita.");
+                return View("Error"); 
+            }
         }
+
 
 
         private CitaFactory ObtenerFabrica(string tipoCita)
@@ -72,5 +89,8 @@ namespace SistemaVeterinaria.Controllers
                     return null;
             }
         }
+
+        //CitaProgramada: falta
+
     }
 }
