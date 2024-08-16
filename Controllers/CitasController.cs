@@ -41,6 +41,25 @@ namespace SistemaVeterinaria.Controllers
             return View(cita);
         }
 
+        [HttpPost]
+        public ActionResult ProgramarCita(string Descripcion, DateTime Fecha, string tipoCita)
+        {
+            CitaFactory factory = ObtenerFabrica(tipoCita);
+
+            if (factory == null)
+            {
+                return HttpNotFound("Tipo de cita no válido");
+            }
+
+            ICita cita = factory.CrearCita();
+            cita.Descripcion = Descripcion;
+            cita.Fecha = Fecha;
+            cita.Programar();//guarrdamos en bd
+
+            return View("CitaProgramada", cita); 
+        }
+
+
         private CitaFactory ObtenerFabrica(string tipoCita)
         {
             switch (tipoCita)

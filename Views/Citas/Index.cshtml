@@ -6,6 +6,23 @@
 
 <h2>Citas</h2>
 
+
+@{
+    var tiposDeCita = new List<(string tipo, string texto)>
+{
+        ("Consulta", "Agendar Cita para Valoración"),
+        ("Vacunacion", "Agendar Cita para Vacunación")
+    };
+}
+
+<!-- Botones para agendar citas según el tipo -->
+@foreach (var tipoCita in tiposDeCita)
+{
+    <a href="@Url.Action("ProgramarCita", "Citas", new { tipoCita = tipoCita.tipo })" class="btn btn-primary">
+        @tipoCita.texto
+    </a>
+}
+
 @{
     var citas = Model.ToList();
     bool hayMasDeUnaCita = citas.Count > 1;
