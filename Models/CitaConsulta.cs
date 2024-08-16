@@ -7,11 +7,15 @@ namespace SistemaVeterinaria.Models
 {
     public class CitaConsulta : ICita
     {
-        public string Descripcion => throw new NotImplementedException();
 
+        public DateTime Fecha { get; set; }
+
+        public string Descripcion { get; set; }
+        
         public void Programar()
         {
-            throw new NotImplementedException();
+
         }
+
     }
 }

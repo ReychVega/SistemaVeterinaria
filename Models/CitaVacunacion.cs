@@ -5,15 +5,17 @@ using System.Web;
 
 namespace SistemaVeterinaria.Models
 {
-    public class CitaVacunacion : ICita
-    {
-        public string Descripcion => "Cita de Vacunación";
-
+  
+        public class CitaVacunacion : ICita
+        {
+        public DateTime Fecha { get; set; }
+        public string Descripcion { get; set; } 
+        
         public void Programar()
         {
 
-
-
         }
     }
+
+    
 }

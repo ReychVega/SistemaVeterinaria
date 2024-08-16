@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SistemaVeterinaria.Models.ICita>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Citas</h2>
+
+@{
+    var citas = Model.ToList();
+    bool hayMasDeUnaCita = citas.Count > 1;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Detalles</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (hayMasDeUnaCita)
+        {
+
+        foreach (var cita in Model)
+        {
+            <tr>
+                <td>@cita.Descripcion</td>
+                <td>@cita.Fecha.ToShortDateString()</td>
+            </tr>
+        }
+        }
+
+    </tbody>
+</table>

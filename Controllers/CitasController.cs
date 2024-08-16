@@ -9,6 +9,26 @@ namespace SistemaVeterinaria.Controllers
 {
     public class CitasController : Controller
     {
+
+        public ActionResult Index()
+        {
+            List<ICita> citas = ObtenerListaDeCitas();
+
+            return View(citas);
+        }
+
+        private List<ICita> ObtenerListaDeCitas(){
+           
+            List<ICita> citas = new List<ICita>
+                {
+                    new ConsultaFactory().CrearCita(),
+                    new VacunacionFactory().CrearCita()
+                };
+
+            return citas;
+        }
+
+
         public ActionResult ProgramarCita(string tipoCita)
         {
             CitaFactory factory = ObtenerFabrica(tipoCita);
