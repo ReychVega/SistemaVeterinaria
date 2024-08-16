@@ -132,6 +132,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\ConsultaFactory.cs" />
     <Compile Include="Models\ICita.cs" />
+    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Models\VacunacionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
