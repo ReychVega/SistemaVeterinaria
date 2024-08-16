@@ -16,7 +16,7 @@ namespace SistemaVeterinaria.Models
         public string Telefono { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime UpdateDate { get; set; }
-        
+
         private static List<Cliente> clientes = new List<Cliente>();
 
     }

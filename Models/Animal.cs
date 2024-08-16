@@ -11,7 +11,7 @@ namespace SistemaVeterinaria.Models
         public int ClienteID { get; set; }
         public string Especie { get; set; }
         public string HistorialClinico { get; set; }
-        
+
         private static List<Animal> animales = new List<Animal>();
 
     }
