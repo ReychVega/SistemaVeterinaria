@@ -37,8 +37,7 @@ namespace SistemaVeterinaria.Controllers
         {       
 
             try
-            {
-                //obtenemos nuestro obj. tipo cita, conforme al method factory patron. El cual crea el objeto basado en la caracteriztica de nuestro obj.
+            {                //obtenemos nuestro obj. tipo cita, conforme al method factory patron. El cual crea el objeto basado en la caracteriztica de nuestro obj.
                 //en este caso, del tipo de cita
                 CitaFactory factory = ObtenerFabrica(tipoCita);
 
@@ -64,8 +63,7 @@ namespace SistemaVeterinaria.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Hubo un error al programar la cita.");
-                return View("Error"); 
+                return View(); 
             }
         }
 
@@ -83,9 +81,7 @@ namespace SistemaVeterinaria.Controllers
                     return null;
             }
         }
-
-
-     
+             
 
         //CitaProgramada: falta
 

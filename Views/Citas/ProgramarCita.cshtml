@@ -8,6 +8,8 @@
 
 @using (Html.BeginForm("ProgramarCita", "Citas", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
+
     <div class="form-group">
         @Html.LabelFor(model => model.Descripcion)
         @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
@@ -69,4 +71,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Programar Cita</button>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
