@@ -74,7 +74,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Fecha)
-        @Html.TextBoxFor(model => model.Fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.TextBoxFor(model => model.Fecha, "{0:yyyy-MM-ddTHH:mm}", new { @class = "form-control", type = "datetime-local" })
         @Html.ValidationMessageFor(model => model.Fecha)
     </div>
 

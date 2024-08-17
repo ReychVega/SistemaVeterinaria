@@ -13,7 +13,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Fecha</th>
+            <th>Fecha y hora</th>
             <th>Tipo</th>
             <th>Descripción</th>
             <th>Cliente</th>
@@ -24,7 +24,7 @@
         @foreach (var cita in Model)
         {
             <tr>
-                <td>@cita.Fecha.ToShortDateString()</td>
+                <td>@cita.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
                 <td>@cita.TipoCita</td>
                 <td>@cita.Descripcion</td>
                 <td>@cita.Nombre @cita.PrimerApellido</td>

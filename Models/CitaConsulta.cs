@@ -8,7 +8,6 @@ namespace SistemaVeterinaria.Models
 {
     public class CitaConsulta : ICita
     {
-
         public DateTime Fecha { get; set; }
 
         public string Descripcion { get; set; }
@@ -22,32 +21,32 @@ namespace SistemaVeterinaria.Models
         public string MascotaNombre { get; set; }
 
         public int ProgramarCita(
-                 string descripcion,
-              string tipoCita,
-              string dni,
-              string primerApellido,
-              string segundoApellido,
-              string nombre,
-              string email,
-              string telefono,
-              string mascotaNombre,
-              DateTime fecha)
+            string descripcion,
+            string tipoCita,
+            string dni,
+            string primerApellido,
+            string segundoApellido,
+            string nombre,
+            string email,
+            string telefono,
+            string mascotaNombre,
+            DateTime fecha)
         {
             try
             {
                 using (var db = new VeterinariaContext())
                 {
-                    //  entradas
-                    if (string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(tipoCita) || string.IsNullOrEmpty(dni) ||
-                        string.IsNullOrEmpty(primerApellido) || string.IsNullOrEmpty(segundoApellido) || string.IsNullOrEmpty(nombre) ||
-                        string.IsNullOrEmpty(email) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(mascotaNombre))
+                    if (string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(tipoCita) ||
+                        string.IsNullOrEmpty(dni) || string.IsNullOrEmpty(primerApellido) ||
+                        string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(email) ||
+                        string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(mascotaNombre))
                     {
                         throw new ArgumentException("Todos los parámetros deben estar llenos.");
                     }
 
                     var cita = new Cita
                     {
-                        Fecha = fecha,
+                        Fecha = fecha, // Fecha y hora se maneja aquí
                         Descripcion = descripcion,
                         TipoCita = tipoCita,
                         DNI = dni,
@@ -70,8 +69,5 @@ namespace SistemaVeterinaria.Models
                 throw new InvalidOperationException("No se pudo programar la cita.", ex);
             }
         }
-
-
-
     }
 }

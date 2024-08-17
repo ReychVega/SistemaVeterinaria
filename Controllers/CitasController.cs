@@ -26,20 +26,18 @@ namespace SistemaVeterinaria.Controllers
 
         [HttpPost]
         public ActionResult ProgramarCita(string descripcion,
-              string tipoCita,
-              string dni,
-              string primerApellido,
-              string segundoApellido,
-              string nombre,
-              string email,
-              string telefono,
-              string mascotaNombre,
-              DateTime fecha)
-        {       
-
+        string tipoCita,
+        string dni,
+        string primerApellido,
+        string segundoApellido,
+        string nombre,
+        string email,
+        string telefono,
+        string mascotaNombre,
+        DateTime fecha)
+        {
             try
-            {                //obtenemos nuestro obj. tipo cita, conforme al method factory patron. El cual crea el objeto basado en la caracteriztica de nuestro obj.
-                //en este caso, del tipo de cita
+            {
                 CitaFactory factory = ObtenerFabrica(tipoCita);
 
                 if (factory == null)
@@ -47,19 +45,8 @@ namespace SistemaVeterinaria.Controllers
                     return HttpNotFound("Tipo de cita no válido");
                 }
 
-
-                //creamos nuestra cita y asignamos atributos para programar la cita correspondiente (enlazado a base de datos)
                 ICita cita = factory.CrearCita();
-                      int idCita= cita.ProgramarCita( descripcion,
-                           tipoCita,
-                           dni,
-                           primerApellido,
-                           segundoApellido,
-                           nombre,
-                           email,
-                           telefono,
-                          mascotaNombre,
-                           fecha);
+                int idCita = cita.ProgramarCita(descripcion, tipoCita, dni, primerApellido, segundoApellido, nombre, email, telefono, mascotaNombre, fecha);
 
                 Cita citaModelo = db.Citas.Find(idCita);
 
@@ -68,16 +55,16 @@ namespace SistemaVeterinaria.Controllers
                     return HttpNotFound("Cita no encontrada");
                 }
 
-                // Pasar el objeto Cita a la vista
                 return View("CitaProgramada", citaModelo);
             }
             catch (Exception ex)
             {
-                return View(); 
+                return View();
             }
         }
 
-       
+
+
 
         private CitaFactory ObtenerFabrica(string tipoCita)
         {

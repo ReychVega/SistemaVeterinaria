@@ -37,9 +37,8 @@ namespace SistemaVeterinaria.Models
         [Required(ErrorMessage = "El nombre de la mascota es obligatorio.")]
         public string MascotaNombre { get; set; }
 
-        [Required(ErrorMessage = "La fecha es obligatoria.")]
-        [DataType(DataType.Date, ErrorMessage = "La fecha no es válida.")]
+        [Required(ErrorMessage = "La fecha y hora son obligatorias.")]
+        [DataType(DataType.DateTime, ErrorMessage = "La fecha y hora no son válidas.")]
         public DateTime Fecha { get; set; }
-
     }
 }
