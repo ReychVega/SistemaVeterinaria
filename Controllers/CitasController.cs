@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -49,7 +50,7 @@ namespace SistemaVeterinaria.Controllers
 
                 //creamos nuestra cita y asignamos atributos para programar la cita correspondiente (enlazado a base de datos)
                 ICita cita = factory.CrearCita();
-                            cita.ProgramarCita( descripcion,
+                      int idCita= cita.ProgramarCita( descripcion,
                            tipoCita,
                            dni,
                            primerApellido,
@@ -59,7 +60,16 @@ namespace SistemaVeterinaria.Controllers
                            telefono,
                           mascotaNombre,
                            fecha);
-                return View("CitaProgramada", cita);
+
+                Cita citaModelo = db.Citas.Find(idCita);
+
+                if (citaModelo == null)
+                {
+                    return HttpNotFound("Cita no encontrada");
+                }
+
+                // Pasar el objeto Cita a la vista
+                return View("CitaProgramada", citaModelo);
             }
             catch (Exception ex)
             {
@@ -82,14 +92,19 @@ namespace SistemaVeterinaria.Controllers
                     return null;
             }
         }
-             
+
 
         //CitaProgramada: falta
 
-        public ActionResult CitaProgramada()
+        public ActionResult CitaProgramada(Cita cita)
         {
-            //levantamos vista para ver una cita creada previamente
-            return View();
+            if (cita == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cita no válida");
+            }
+
+            return View(cita);
         }
+
     }
 }

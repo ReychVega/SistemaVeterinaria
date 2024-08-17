@@ -1,7 +1,48 @@
-﻿
+﻿@model SistemaVeterinaria.Models.Cita
+
 @{
-    ViewBag.Title = "CitaProgramada";
+    ViewBag.Title = "Cita Programada";
 }
 
 <h2>Cita Programada</h2>
 
+<div class="alert alert-success">
+    <strong>¡Éxito!</strong> La cita ha sido programada correctamente.
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Descripción</th>
+        <td>@Model.Descripcion</td>
+    </tr>
+    <tr>
+        <th>Tipo de Cita</th>
+        <td>@Model.TipoCita</td>
+    </tr>
+    <tr>
+        <th>DNI</th>
+        <td>@Model.DNI</td>
+    </tr>
+    <tr>
+        <th>Nombre</th>
+        <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Teléfono</th>
+        <td>@Model.Telefono</td>
+    </tr>
+    <tr>
+        <th>Nombre de la Mascota</th>
+        <td>@Model.MascotaNombre</td>
+    </tr>
+    <tr>
+        <th>Fecha</th>
+        <td>@Model.Fecha.ToString("yyyy-MM-dd")</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("Index", "Citas")" class="btn btn-primary">Volver al listado de citas</a>
