@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaVeterinaria.Models.ICita>
+﻿@model IEnumerable<SistemaVeterinaria.Models.Cita>
 
 @{
     ViewBag.Title = "Index";
@@ -6,40 +6,30 @@
 
 <h2>Citas</h2>
 
-
-
-
-
 <a href="@Url.Action("ProgramarCita", "Citas")" class="btn btn-primary">
     Agendar Cita
 </a>
 
-
-@{
-    var citas = Model.ToList();
-    bool hayMasDeUnaCita = citas.Count > 1;
-}
-
 <table class="table">
     <thead>
         <tr>
-            <th>Tipo</th>
-            <th>Detalles</th>
             <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Cliente</th>
+            <th>Mascota</th>
         </tr>
     </thead>
     <tbody>
-        @if (hayMasDeUnaCita)
+        @foreach (var cita in Model)
         {
-
-            foreach (var cita in Model)
-            {
-                <tr>
-                    <td>@cita.Descripcion</td>
-                    <td>@cita.Fecha.ToShortDateString()</td>
-                </tr>
-            }
+            <tr>
+                <td>@cita.Fecha.ToShortDateString()</td>
+                <td>@cita.TipoCita</td>
+                <td>@cita.Descripcion</td>
+                <td>@cita.Nombre @cita.PrimerApellido</td>
+                <td>@cita.MascotaNombre</td>
+            </tr>
         }
-
     </tbody>
 </table>

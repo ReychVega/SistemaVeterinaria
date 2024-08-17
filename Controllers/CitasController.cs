@@ -9,49 +9,32 @@ namespace SistemaVeterinaria.Controllers
 {
     public class CitasController : Controller
     {
+        private VeterinariaContext db = new VeterinariaContext(); 
 
         public ActionResult Index()
         {
-            List<ICita> citas = ObtenerListaDeCitas();
-
-            return View(citas);
+            var citas = db.Citas.ToList(); 
+            return View(citas); 
         }
-
-        private List<ICita> ObtenerListaDeCitas(){
-
-            List<ICita> citas = new List<ICita>();
-            //aqui debemos traer la lista de la bd (solo para demostrar funcionalidad del modulo)
-
-            return citas;
-        }
-
 
         public ActionResult ProgramarCita()
         {
             //levantamos vista para programar una cita
-            ViewBag.Animales = ObtenerAnimales();
             return View();
         }
 
         [HttpPost]
-        public ActionResult ProgramarCita(string Descripcion, DateTime Fecha, string tipoCita, int clienteId, int animalId)
-        {
-            //revisamos que los datos no esten nulos
-            if (string.IsNullOrWhiteSpace(Descripcion))
-            {
-                ModelState.AddModelError("Descripcion", "La descripción no puede estar vacía.");
-            }
-
-            if (Fecha < DateTime.Now)
-            {
-                ModelState.AddModelError("Fecha", "La fecha no se encuentra disponible para una cita");
-            }
-
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Animales = ObtenerAnimales();
-                return View(); 
-            }
+        public ActionResult ProgramarCita(string descripcion,
+              string tipoCita,
+              string dni,
+              string primerApellido,
+              string segundoApellido,
+              string nombre,
+              string email,
+              string telefono,
+              string mascotaNombre,
+              DateTime fecha)
+        {       
 
             try
             {
@@ -67,7 +50,16 @@ namespace SistemaVeterinaria.Controllers
 
                 //creamos nuestra cita y asignamos atributos para programar la cita correspondiente (enlazado a base de datos)
                 ICita cita = factory.CrearCita();
-                cita.ProgramarCita(Fecha, Descripcion, tipoCita, animalId, clienteId);
+                            cita.ProgramarCita( descripcion,
+                           tipoCita,
+                           dni,
+                           primerApellido,
+                           segundoApellido,
+                           nombre,
+                           email,
+                           telefono,
+                          mascotaNombre,
+                           fecha);
                 return View("CitaProgramada", cita);
             }
             catch (Exception ex)
@@ -77,13 +69,7 @@ namespace SistemaVeterinaria.Controllers
             }
         }
 
-        private List<Animal> ObtenerAnimales()
-        {
-            //retornamos de bd.
-
-
-            return new List<Animal>();
-        }
+       
 
         private CitaFactory ObtenerFabrica(string tipoCita)
         {
@@ -99,29 +85,7 @@ namespace SistemaVeterinaria.Controllers
         }
 
 
-        public ActionResult ObtenerInformacionCliente(int animalId)
-        {
-            var animal = ObtenerAnimales().FirstOrDefault(a => a.Id == animalId);
-            if (animal != null)
-            {
-                var cliente = ObtenerClientes().FirstOrDefault(c => c.Id == animal.ClienteID);
-                if (cliente != null)
-                {
-                    return PartialView("_InformacionCliente", cliente);
-                }
-            }
-            return HttpNotFound();
-        }
-
-        private List<Cliente> ObtenerClientes()
-        {
-
-            //de la bd
-            return new List<Cliente>();
-        }
-
-
-
+     
 
         //CitaProgramada: falta
 

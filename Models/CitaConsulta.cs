@@ -12,26 +12,65 @@ namespace SistemaVeterinaria.Models
         public DateTime Fecha { get; set; }
 
         public string Descripcion { get; set; }
+        public string TipoCita { get; set; }
+        public string DNI { get; set; }
+        public string PrimerApellido { get; set; }
+        public string SegundoApellido { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
+        public string MascotaNombre { get; set; }
 
-        public int ProgramarCita(DateTime dateTime, string Descripcion, String tipoCita, int idPet, int clienteId)
+        public int ProgramarCita(
+                 string descripcion,
+              string tipoCita,
+              string dni,
+              string primerApellido,
+              string segundoApellido,
+              string nombre,
+              string email,
+              string telefono,
+              string mascotaNombre,
+              DateTime fecha)
         {
-            using (var db = new VeterinariaContext()) 
+            try
             {
-                var cita = new Cita
+                using (var db = new VeterinariaContext())
                 {
-                    Fecha = dateTime,
-                    Descripcion = Descripcion,
-                    TipoCita = tipoCita,
-                    ClienteId = clienteId,
-                    AnimalId = idPet
-                };
+                    //  entradas
+                    if (string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(tipoCita) || string.IsNullOrEmpty(dni) ||
+                        string.IsNullOrEmpty(primerApellido) || string.IsNullOrEmpty(segundoApellido) || string.IsNullOrEmpty(nombre) ||
+                        string.IsNullOrEmpty(email) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(mascotaNombre))
+                    {
+                        throw new ArgumentException("Todos los parámetros deben estar llenos.");
+                    }
 
-                db.Citas.Add(cita);
-                db.SaveChanges();
+                    var cita = new Cita
+                    {
+                        Fecha = fecha,
+                        Descripcion = descripcion,
+                        TipoCita = tipoCita,
+                        DNI = dni,
+                        PrimerApellido = primerApellido,
+                        SegundoApellido = segundoApellido,
+                        Nombre = nombre,
+                        Email = email,
+                        Telefono = telefono,
+                        MascotaNombre = mascotaNombre
+                    };
 
-                return cita.Id; 
+                    db.Citas.Add(cita);
+                    db.SaveChanges();
+
+                    return cita.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("No se pudo programar la cita.", ex);
             }
         }
+
 
 
     }

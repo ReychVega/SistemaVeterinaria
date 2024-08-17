@@ -18,15 +18,19 @@ namespace SistemaVeterinaria.Models
 
         [Required]
         public string TipoCita { get; set; }
+        [Required]
+        public string DNI { get; set; }
+        [Required]
+        public string Nombre { get; set; }
+        [Required]
+        public string PrimerApellido { get; set; }
+        public string SegundoApellido { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string Telefono { get; set; }
+        [Required]
+        public string MascotaNombre { get; set; }
 
-
-        [ForeignKey("Cliente")]
-        public int ClienteId { get; set; }
-        public virtual Cliente Cliente { get; set; }
-
-
-        [ForeignKey("Animal")]
-        public int AnimalId { get; set; }
-        public virtual Animal Animal { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace SistemaVeterinaria.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class NombrePet : IMigrationMetadata
+    public sealed partial class VeterinariaDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NombrePet));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(VeterinariaDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202408170339507_NombrePet"; }
+            get { return "202408170540345_VeterinariaDb"; }
         }
         
         string IMigrationMetadata.Source

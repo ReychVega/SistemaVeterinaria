@@ -118,35 +118,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202408162132074_PrimeraMigracion.cs" />
-    <Compile Include="Migrations\202408162132074_PrimeraMigracion.Designer.cs">
-      <DependentUpon>202408162132074_PrimeraMigracion.cs</DependentUpon>
+    <Compile Include="Migrations\202408170540345_VeterinariaDb.cs" />
+    <Compile Include="Migrations\202408170540345_VeterinariaDb.Designer.cs">
+      <DependentUpon>202408170540345_VeterinariaDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202408162157133_NuevaMigracion.cs" />
-    <Compile Include="Migrations\202408162157133_NuevaMigracion.Designer.cs">
-      <DependentUpon>202408162157133_NuevaMigracion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202408170339507_NombrePet.cs" />
-    <Compile Include="Migrations\202408170339507_NombrePet.Designer.cs">
-      <DependentUpon>202408170339507_NombrePet.cs</DependentUpon>
+    <Compile Include="Migrations\202408170548346_namePet.cs" />
+    <Compile Include="Migrations\202408170548346_namePet.Designer.cs">
+      <DependentUpon>202408170548346_namePet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Cita.cs" />
     <Compile Include="Models\CitaConsulta.cs" />
     <Compile Include="Models\CitaFactory.cs" />
     <Compile Include="Models\CitaVacunacion.cs" />
-    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\ConsultaFactory.cs" />
     <Compile Include="Models\ICita.cs" />
-    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Models\VacunacionFactory.cs" />
     <Compile Include="Models\VeterinariaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,17 +219,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Citas\Index.cshtml" />
     <Content Include="Views\Citas\ProgramarCita.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Clientes\Delete.cshtml" />
-    <Content Include="Views\Clientes\Details.cshtml" />
-    <Content Include="Views\Clientes\Edit.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Citas\_InformacionCliente.cshtml" />
-    <Content Include="Views\Animals\Create.cshtml" />
-    <Content Include="Views\Animals\Delete.cshtml" />
-    <Content Include="Views\Animals\Details.cshtml" />
-    <Content Include="Views\Animals\Edit.cshtml" />
-    <Content Include="Views\Animals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -247,14 +227,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202408162132074_PrimeraMigracion.resx">
-      <DependentUpon>202408162132074_PrimeraMigracion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202408170540345_VeterinariaDb.resx">
+      <DependentUpon>202408170540345_VeterinariaDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202408162157133_NuevaMigracion.resx">
-      <DependentUpon>202408162157133_NuevaMigracion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202408170339507_NombrePet.resx">
-      <DependentUpon>202408170339507_NombrePet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202408170548346_namePet.resx">
+      <DependentUpon>202408170548346_namePet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

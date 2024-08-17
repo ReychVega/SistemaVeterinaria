@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NombrePet : DbMigration
+    public partial class namePet : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Animals", "Nombre", c => c.String());
+            AddColumn("dbo.Citas", "MascotaNombre", c => c.String(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Animals", "Nombre");
+            DropColumn("dbo.Citas", "MascotaNombre");
         }
     }
 }
