@@ -13,6 +13,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ClienteID = c.Int(nullable: false),
+                         Nombre= c.String(nullable: false),
                         Especie = c.String(),
                         HistorialClinico = c.String(),
                     })

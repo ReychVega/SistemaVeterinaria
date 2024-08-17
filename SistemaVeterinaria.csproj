@@ -118,7 +118,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -132,6 +131,10 @@
     <Compile Include="Migrations\202408162157133_NuevaMigracion.cs" />
     <Compile Include="Migrations\202408162157133_NuevaMigracion.Designer.cs">
       <DependentUpon>202408162157133_NuevaMigracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408170339507_NombrePet.cs" />
+    <Compile Include="Migrations\202408170339507_NombrePet.Designer.cs">
+      <DependentUpon>202408170339507_NombrePet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animal.cs" />
@@ -230,11 +233,6 @@
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Citas\_InformacionCliente.cshtml" />
-    <Content Include="Views\Animals\Create.cshtml" />
-    <Content Include="Views\Animals\Delete.cshtml" />
-    <Content Include="Views\Animals\Details.cshtml" />
-    <Content Include="Views\Animals\Edit.cshtml" />
-    <Content Include="Views\Animals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202408162157133_NuevaMigracion.resx">
       <DependentUpon>202408162157133_NuevaMigracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408170339507_NombrePet.resx">
+      <DependentUpon>202408170339507_NombrePet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

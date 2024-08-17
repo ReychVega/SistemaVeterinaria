@@ -14,7 +14,6 @@ namespace SistemaVeterinaria.Models
 
         public int Id { get; set; }
         public int ClienteID { get; set; }
-
         public string Nombre { get; set; }
         public string Especie { get; set; }
         public string HistorialClinico { get; set; }
