@@ -74,22 +74,40 @@ namespace SistemaVeterinaria.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,DNI,Nombre,PrimerApellido,SegundoApellido,Email,Telefono")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                cliente.UpdateDate = DateTime.Now;
-                db.Entry(cliente).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var existingClient = db.Clientes.AsNoTracking().FirstOrDefault(c => c.Id == cliente.Id);
+                if (existingClient == null)
+                {
+                    return HttpNotFound("Cliente no encontrado.");
+                }
+
+                if (cliente != null)
+                {
+                    cliente.InsertDate = existingClient.InsertDate;
+                    cliente.UpdateDate = DateTime.Now;
+
+                    db.Entry(cliente).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "El cliente no puede ser null.");
+                }
             }
             return View(cliente);
         }
+
+
+
 
 
         // GET: Clientes/Delete/5
