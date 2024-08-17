@@ -16,10 +16,18 @@
         @Html.ValidationMessageFor(model => model.Descripcion)
     </div>
 
+
     <div class="form-group">
         @Html.LabelFor(model => model.TipoCita)
-        @Html.TextBoxFor(model => model.TipoCita, new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.TipoCita,
+            new List<SelectListItem> {
+                new SelectListItem { Text = "Consulta", Value = "Consulta" },
+                new SelectListItem { Text = "Vacunación", Value = "Vacunacion" }
+            },
+            "Seleccione un tipo de cita",
+            new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.TipoCita)
+
     </div>
 
     <div class="form-group">

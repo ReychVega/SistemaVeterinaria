@@ -219,6 +219,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Citas\Index.cshtml" />
     <Content Include="Views\Citas\ProgramarCita.cshtml" />
+    <Content Include="Views\Citas\CitaProgramada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
