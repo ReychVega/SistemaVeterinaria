@@ -11,7 +11,7 @@ namespace SistemaVeterinaria.Models
 
         DateTime Fecha { get; set; }  
 
-        void Programar();
+        int ProgramarCita(DateTime dateTime, string Descripcion, String tipoCita, int idPet, int clienteId);
 
     }
 }

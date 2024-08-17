@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.WebPages;
 
 namespace SistemaVeterinaria.Models
 {
@@ -11,11 +12,27 @@ namespace SistemaVeterinaria.Models
         public DateTime Fecha { get; set; }
 
         public string Descripcion { get; set; }
-        
-        public void Programar()
-        {
 
+        public int ProgramarCita(DateTime dateTime, string Descripcion, String tipoCita, int idPet, int clienteId)
+        {
+            using (var db = new VeterinariaContext()) 
+            {
+                var cita = new Cita
+                {
+                    Fecha = dateTime,
+                    Descripcion = Descripcion,
+                    TipoCita = tipoCita,
+                    ClienteId = clienteId,
+                    AnimalId = idPet
+                };
+
+                db.Citas.Add(cita);
+                db.SaveChanges();
+
+                return cita.Id; 
+            }
         }
+
 
     }
 }
