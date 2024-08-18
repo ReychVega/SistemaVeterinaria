@@ -4,45 +4,87 @@
     ViewBag.Title = "Cita Programada";
 }
 
-<h2>Cita Programada</h2>
 
-<div class="alert alert-success">
-    <strong>¡Éxito!</strong> La cita ha sido programada correctamente.
+
+<style>
+    body {
+        background-color: #E5D2B8; /* Vainilla para el fondo */
+        color: #004d00; /* Verde oscuro para el texto */
+    }
+
+
+    h2 {
+        color: #004d00; /* Verde oscuro para los títulos */
+    }
+
+    .alert-success {
+        background-color: #ccffcc; /* Verde claro para la alerta de éxito */
+        border-color: #004d00; /* Verde oscuro para el borde */
+        color: #004d00; /* Verde oscuro para el texto */
+    }
+
+    .table {
+        background-color: #ffffff; /* Blanco para el fondo de la tabla */
+        color: #004d00; /* Verde oscuro para el texto */
+    }
+
+    .table-bordered th, .table-bordered td {
+        border-color: #004d00; /* Verde oscuro para el borde de la tabla */
+    }
+
+    .btn-primary {
+        background-color: #0066cc; /* Azul para el botón */
+        border-color: #005bb5;
+        color: #ffffff;
+    }
+
+        .btn-primary:hover {
+            background-color: #005bb5;
+            border-color: #004999;
+        }
+</style>
+
+<div class="container">
+    <h2>Cita Programada</h2>
+
+    <div class="alert alert-success">
+        <strong>¡Éxito!</strong> La cita ha sido programada correctamente.
+    </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Descripción</th>
+            <td>@Model.Descripcion</td>
+        </tr>
+        <tr>
+            <th>Tipo de Cita</th>
+            <td>@Model.TipoCita</td>
+        </tr>
+        <tr>
+            <th>DNI</th>
+            <td>@Model.DNI</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Teléfono</th>
+            <td>@Model.Telefono</td>
+        </tr>
+        <tr>
+            <th>Nombre de la Mascota</th>
+            <td>@Model.MascotaNombre</td>
+        </tr>
+        <tr>
+            <th>Fecha y Hora</th>
+            <td>@Model.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
+        </tr>
+    </table>
+
+    <a href="@Url.Action("Index", "Citas")" class="btn btn-primary">Volver al listado de citas</a>
 </div>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Descripción</th>
-        <td>@Model.Descripcion</td>
-    </tr>
-    <tr>
-        <th>Tipo de Cita</th>
-        <td>@Model.TipoCita</td>
-    </tr>
-    <tr>
-        <th>DNI</th>
-        <td>@Model.DNI</td>
-    </tr>
-    <tr>
-        <th>Nombre</th>
-        <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>@Model.Email</td>
-    </tr>
-    <tr>
-        <th>Teléfono</th>
-        <td>@Model.Telefono</td>
-    </tr>
-    <tr>
-        <th>Nombre de la Mascota</th>
-        <td>@Model.MascotaNombre</td>
-    </tr>
-    <tr>
-        <th>Fecha y Hora</th>
-        <td>@Model.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
-    </tr>
-</table>
-
-<a href="@Url.Action("Index", "Citas")" class="btn btn-primary">Volver al listado de citas</a>

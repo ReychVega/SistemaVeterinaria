@@ -4,11 +4,52 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Citas</h2>
 
+<!-- Estilo para la pagina -->
+<style>
+    body {
+        background-color: #E5D2B8; /* Verde limón claro */
+        color: #004d00; /* Verde oscuro */
+    }
+
+    h2 {
+        color: #004d00; /* Verde oscuro */
+    }
+
+
+    .btn-primary {
+        background-color: #006600; /* Verde más oscuro */
+        border-color: #004d00;
+    }
+
+        .btn-primary:hover {
+            background-color: #004d00;
+            border-color: #003300;
+        }
+
+    .table {
+        background-color: #e6ffe6; /* Fondo verde claro para la tabla */
+        color: #004d00; /* Verde oscuro */
+    }
+
+        .table th {
+            background-color: #004d00; /* Fondo verde oscuro para los encabezados */
+            color: #ffffff; /* Texto blanco */
+        }
+
+        .table td {
+            border-color: #004d00; /* Borde verde oscuro */
+        }
+</style>
+
+<h2>Citas Agendadas</h2>
+<br />
 <a href="@Url.Action("ProgramarCita", "Citas")" class="btn btn-primary">
     Agendar Cita
 </a>
+
+<br />
+<br />
 
 <table class="table">
     <thead>

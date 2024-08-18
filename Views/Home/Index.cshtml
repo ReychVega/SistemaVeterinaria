@@ -2,23 +2,74 @@
     ViewBag.Title = "Página Principal";
 }
 
+<!-- Estilos personalizados -->
+<style>
+    body {
+        background-color: #E5D2B8; /* Vainilla para el fondo */
+        color: #004d00; /* Verde oscuro para el texto */
+    }
+
+    main {
+        background-image: url('https://dualvet.com/wp-content/uploads/2016/09/clinica-veterinaria-perros-gatos.png');
+        background-size: contain; /* Ajusta la imagen para que se vea completa */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        background-position: center; /* Centra la imagen en el contenedor */
+        padding: 30px;
+        border-radius: 10px;
+        min-height: 500px; /* Asegura que el contenedor tenga una altura mínima para la imagen */
+    }
+
+    h1, h2 {
+        color: #004d00; /* Verde oscuro para los títulos */
+    }
+
+    .btn-primary {
+        background-color: #0066cc; /* Azul para el botón */
+        border-color: #005bb5;
+        color: #ffffff;
+    }
+
+        .btn-primary:hover {
+            background-color: #005bb5;
+            border-color: #004999;
+        }
+
+    p.lead {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+
+    section {
+        margin-bottom: 20px;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+        border-radius: 10px;
+    }
+
+    .bg-white {
+        background-color: rgba(255, 255, 255, 0.8); /* Blanco semitransparente para los cuadros */
+    }
+
+    .col-md-6 {
+        margin-bottom: 30px; /* Separación entre las secciones de abajo */
+    }
+</style>
+
 <main>
-    <section class="row" aria-labelledby="veterinaryTitle">
+    <section class="text-center mb-4 bg-green" aria-labelledby="veterinaryTitle">
         <h1 id="title">Veterinaria</h1>
         <p class="lead">Bienvenido a nuestra veterinaria, donde el cuidado de tu mascota es nuestra prioridad. Ofrecemos una amplia gama de servicios para mantener a tu mascota saludable y feliz.</p>
         <a>@Html.ActionLink("Conoce nuestros servicios", "Index", "Citas", new { area = "" }, new { @class = "btn btn-primary" })</a>
-        
     </section>
 
     <div class="row">
-        <section class="col-md-4" aria-labelledby="consultationTitle">
+        <section class="col-md-6 text-center bg-green" aria-labelledby="consultationTitle">
             <h2 id="consultationTitle">Consultas y Diagnósticos</h2>
             <p>
                 Contamos con veterinarios altamente calificados para realizar consultas y diagnósticos precisos, asegurando el bienestar de tu mascota.
             </p>
-          
         </section>
-        <section class="col-md-4" aria-labelledby="petCareTitle">
+        <section class="col-md-6 text-center bg-green" aria-labelledby="petCareTitle">
             <h2 id="petCareTitle">Cuidado y Aseo</h2>
             <p>Proporcionamos servicios de aseo y cuidado para mantener a tu mascota en las mejores condiciones.</p>
         </section>
