@@ -10,24 +10,27 @@
 {
     @Html.AntiForgeryToken()
 
+    <!-- Mostrar mensajes de error del ModelState -->
+    <div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Descripcion)
         @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Descripcion)
     </div>
 
-
     <div class="form-group">
         @Html.LabelFor(model => model.TipoCita)
         @Html.DropDownListFor(model => model.TipoCita,
-            new List<SelectListItem> {
+                 new List<SelectListItem> {
                 new SelectListItem { Text = "Consulta", Value = "Consulta" },
                 new SelectListItem { Text = "Vacunación", Value = "Vacunacion" }
-            },
-            "Seleccione un tipo de cita",
-            new { @class = "form-control" })
+                         },
+                 "Seleccione un tipo de cita",
+                 new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.TipoCita)
-
     </div>
 
     <div class="form-group">
@@ -80,6 +83,7 @@
 
     <button type="submit" class="btn btn-primary">Programar Cita</button>
 }
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
