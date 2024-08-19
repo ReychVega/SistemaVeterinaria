@@ -56,22 +56,34 @@
 </style>
 
 <main>
+    <!-- Sección principal con un mensaje de bienvenida -->
     <section class="text-center mb-4 bg-green" aria-labelledby="veterinaryTitle">
+        <!-- Título principal de la página -->
         <h1 id="title">Veterinaria</h1>
+        <!-- Descripción breve de la veterinaria -->
         <p class="lead">Bienvenido a nuestra veterinaria, donde el cuidado de tu mascota es nuestra prioridad. Ofrecemos una amplia gama de servicios para mantener a tu mascota saludable y feliz.</p>
+        <!-- Enlace a la página de servicios -->
         <a>@Html.ActionLink("Conoce nuestros servicios", "Index", "Citas", new { area = "" }, new { @class = "btn btn-primary" })</a>
     </section>
 
+    <!-- Contenedor para las secciones de servicios -->
     <div class="row">
+        <!-- Sección para Consultas y Diagnósticos -->
         <section class="col-md-6 text-center bg-green" aria-labelledby="consultationTitle">
+            <!-- Título de la sección -->
             <h2 id="consultationTitle">Consultas y Diagnósticos</h2>
+            <!-- Descripción de los servicios de consultas y diagnósticos -->
             <p>
                 Contamos con veterinarios altamente calificados para realizar consultas y diagnósticos precisos, asegurando el bienestar de tu mascota.
             </p>
         </section>
+        <!-- Sección para Cuidado y Aseo -->
         <section class="col-md-6 text-center bg-green" aria-labelledby="petCareTitle">
+            <!-- Título de la sección -->
             <h2 id="petCareTitle">Cuidado y Aseo</h2>
+            <!-- Descripción de los servicios de cuidado y aseo -->
             <p>Proporcionamos servicios de aseo y cuidado para mantener a tu mascota en las mejores condiciones.</p>
         </section>
     </div>
 </main>
+

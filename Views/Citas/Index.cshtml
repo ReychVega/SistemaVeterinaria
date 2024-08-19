@@ -42,8 +42,11 @@
         }
 </style>
 
+<!-- Título de la sección -->
 <h2>Citas Agendadas</h2>
 <br />
+
+<!-- Enlace para agendar una nueva cita -->
 <a href="@Url.Action("ProgramarCita", "Citas")" class="btn btn-primary">
     Agendar Cita
 </a>
@@ -51,9 +54,11 @@
 <br />
 <br />
 
+<!-- Tabla para mostrar las citas agendadas -->
 <table class="table">
     <thead>
         <tr>
+            <!-- Encabezados de la tabla -->
             <th>Fecha y hora</th>
             <th>Tipo</th>
             <th>Descripción</th>
@@ -62,15 +67,18 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Iteramos sobre cada cita en el modelo -->
         @foreach (var cita in Model)
         {
             <tr>
-                <td>@cita.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
-                <td>@cita.TipoCita</td>
-                <td>@cita.Descripcion</td>
-                <td>@cita.Nombre @cita.PrimerApellido</td>
-                <td>@cita.MascotaNombre</td>
+                <!-- Mostramos los detalles de cada cita en una fila de la tabla -->
+                <td>@cita.Fecha.ToString("yyyy-MM-dd HH:mm")</td> <!-- Fecha y hora de la cita -->
+                <td>@cita.TipoCita</td> <!-- Tipo de cita -->
+                <td>@cita.Descripcion</td> <!-- Descripción de la cita -->
+                <td>@cita.Nombre @cita.PrimerApellido</td> <!-- Nombre del cliente -->
+                <td>@cita.MascotaNombre</td> <!-- Nombre de la mascota -->
             </tr>
         }
     </tbody>
 </table>
+

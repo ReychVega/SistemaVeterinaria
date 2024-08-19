@@ -1,39 +1,59 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Metadatos del documento -->
+    <meta charset="utf-8" /> <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para que sea responsive -->
+    <title>@ViewBag.Title - My ASP.NET Application</title> <!-- Título de la página, dinámico según el ViewBag.Title -->
+    <!-- Renderiza los estilos CSS -->
     @Styles.Render("~/Content/css")
+
+    <!-- Renderiza el script de Modernizr para compatibilidad con navegadores antiguos -->
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
+            <!-- Enlace a la página principal con el nombre de la aplicación -->
             @Html.ActionLink("PetHarmony", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Contenedor colapsable de los enlaces de navegación -->
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
+                    <!-- Enlace a la página principal -->
                     <li>@Html.ActionLink("Página Principal", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <!-- Enlace a la página "Sobre nosotros" -->
                     <li>@Html.ActionLink("Sobre nosotros", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <!-- Enlace a la página de contacto -->
                     <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Contenedor principal del contenido de la página -->
     <div class="container body-content">
+        <!-- Renderiza el contenido de la vista específica -->
         @RenderBody()
         <hr />
+        <!-- Pie de página -->
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p> <!-- Muestra el año actual y el nombre de la aplicación -->
         </footer>
     </div>
 
+    <!-- Renderiza los scripts de jQuery y Bootstrap -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    <!-- Sección opcional para scripts adicionales -->
     @RenderSection("scripts", required: false)
 </body>
 </html>

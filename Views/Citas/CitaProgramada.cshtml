@@ -45,46 +45,59 @@
 </style>
 
 <div class="container">
+    <!-- Título de la sección -->
     <h2>Cita Programada</h2>
 
+    <!-- Mensaje de éxito -->
     <div class="alert alert-success">
         <strong>¡Éxito!</strong> La cita ha sido programada correctamente.
     </div>
 
+    <!-- Tabla para mostrar los detalles de la cita programada -->
     <table class="table table-bordered">
         <tr>
+            <!-- Fila para la descripción de la cita -->
             <th>Descripción</th>
             <td>@Model.Descripcion</td>
         </tr>
         <tr>
+            <!-- Fila para el tipo de cita -->
             <th>Tipo de Cita</th>
             <td>@Model.TipoCita</td>
         </tr>
         <tr>
+            <!-- Fila para el DNI del cliente -->
             <th>DNI</th>
             <td>@Model.DNI</td>
         </tr>
         <tr>
+            <!-- Fila para el nombre completo del cliente -->
             <th>Nombre</th>
             <td>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</td>
         </tr>
         <tr>
+            <!-- Fila para el email del cliente -->
             <th>Email</th>
             <td>@Model.Email</td>
         </tr>
         <tr>
+            <!-- Fila para el teléfono del cliente -->
             <th>Teléfono</th>
             <td>@Model.Telefono</td>
         </tr>
         <tr>
+            <!-- Fila para el nombre de la mascota -->
             <th>Nombre de la Mascota</th>
             <td>@Model.MascotaNombre</td>
         </tr>
         <tr>
+            <!-- Fila para la fecha y hora de la cita -->
             <th>Fecha y Hora</th>
             <td>@Model.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
         </tr>
     </table>
 
+    <!-- Enlace para volver al listado de citas -->
     <a href="@Url.Action("Index", "Citas")" class="btn btn-primary">Volver al listado de citas</a>
 </div>
+

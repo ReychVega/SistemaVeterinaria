@@ -1,13 +1,17 @@
 ﻿@model SistemaVeterinaria.Models.Cita
 
 @{
+    // Establecemos el título de la página
     ViewBag.Title = "Programar Cita";
 }
 
+<!-- Título de la sección -->
 <h2>Programar Cita</h2>
 
+<!-- Iniciamos un formulario que enviará los datos a la acción "ProgramarCita" del controlador "Citas" usando el método POST -->
 @using (Html.BeginForm("ProgramarCita", "Citas", FormMethod.Post))
 {
+    // Genera un token antifalsificación para evitar ataques CSRF
     @Html.AntiForgeryToken()
 
     <!-- Mostrar mensajes de error del ModelState -->
@@ -15,12 +19,14 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     </div>
 
+    <!-- Campo para la descripción de la cita -->
     <div class="form-group">
         @Html.LabelFor(model => model.Descripcion)
         @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Descripcion)
     </div>
 
+    <!-- Campo para seleccionar el tipo de cita -->
     <div class="form-group">
         @Html.LabelFor(model => model.TipoCita)
         @Html.DropDownListFor(model => model.TipoCita,
@@ -33,57 +39,67 @@
         @Html.ValidationMessageFor(model => model.TipoCita)
     </div>
 
+    <!-- Campo para el DNI del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.DNI)
         @Html.TextBoxFor(model => model.DNI, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.DNI)
     </div>
 
+    <!-- Campo para el primer apellido del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.PrimerApellido)
         @Html.TextBoxFor(model => model.PrimerApellido, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.PrimerApellido)
     </div>
 
+    <!-- Campo para el segundo apellido del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.SegundoApellido)
         @Html.TextBoxFor(model => model.SegundoApellido, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.SegundoApellido)
     </div>
 
+    <!-- Campo para el nombre del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.Nombre)
         @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Nombre)
     </div>
 
+    <!-- Campo para el email del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.Email)
         @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Email)
     </div>
 
+    <!-- Campo para el teléfono del cliente -->
     <div class="form-group">
         @Html.LabelFor(model => model.Telefono)
         @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Telefono)
     </div>
 
+    <!-- Campo para el nombre de la mascota -->
     <div class="form-group">
         @Html.LabelFor(model => model.MascotaNombre)
         @Html.TextBoxFor(model => model.MascotaNombre, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.MascotaNombre)
     </div>
 
+    <!-- Campo para la fecha y hora de la cita -->
     <div class="form-group">
         @Html.LabelFor(model => model.Fecha)
         @Html.TextBoxFor(model => model.Fecha, "{0:yyyy-MM-ddTHH:mm}", new { @class = "form-control", type = "datetime-local" })
         @Html.ValidationMessageFor(model => model.Fecha)
     </div>
 
+    <!-- Botón para enviar el formulario -->
     <button type="submit" class="btn btn-primary">Programar Cita</button>
 }
 
+<!-- Sección de scripts para la validación del formulario -->
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

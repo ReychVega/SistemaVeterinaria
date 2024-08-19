@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Importamos las librerías necesarias
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,10 +7,13 @@ using System.Web.WebPages;
 
 namespace SistemaVeterinaria.Models
 {
+    // Definimos la clase CitaConsulta que implementa la interfaz ICita
     public class CitaConsulta : ICita
     {
+        // Propiedad Fecha para almacenar la fecha y hora de la cita
         public DateTime Fecha { get; set; }
 
+        // Propiedades para almacenar los detalles de la cita
         public string Descripcion { get; set; }
         public string TipoCita { get; set; }
         public string DNI { get; set; }
@@ -20,6 +24,7 @@ namespace SistemaVeterinaria.Models
         public string Telefono { get; set; }
         public string MascotaNombre { get; set; }
 
+        // Método para programar una cita
         public int ProgramarCita(
             string descripcion,
             string tipoCita,
@@ -34,8 +39,10 @@ namespace SistemaVeterinaria.Models
         {
             try
             {
+                // Usamos un contexto de base de datos para interactuar con la base de datos
                 using (var db = new VeterinariaContext())
                 {
+                    // Validamos que todos los parámetros obligatorios estén llenos
                     if (string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(tipoCita) ||
                         string.IsNullOrEmpty(dni) || string.IsNullOrEmpty(primerApellido) ||
                         string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(email) ||
@@ -44,6 +51,7 @@ namespace SistemaVeterinaria.Models
                         throw new ArgumentException("Todos los parámetros deben estar llenos.");
                     }
 
+                    // Creamos una nueva instancia de Cita con los datos proporcionados
                     var cita = new Cita
                     {
                         Fecha = fecha, // Fecha y hora se maneja aquí
@@ -58,16 +66,21 @@ namespace SistemaVeterinaria.Models
                         MascotaNombre = mascotaNombre
                     };
 
+                    // Agregamos la nueva cita a la base de datos y guardamos los cambios
                     db.Citas.Add(cita);
                     db.SaveChanges();
 
+                    // Retornamos el Id de la cita recién creada
                     return cita.Id;
                 }
             }
             catch (Exception ex)
             {
+                // En caso de error, lanzamos una excepción con un mensaje descriptivo
                 throw new InvalidOperationException("No se pudo programar la cita.", ex);
             }
         }
     }
 }
+
+
